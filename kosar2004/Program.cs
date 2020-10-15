@@ -80,12 +80,34 @@ namespace kosar2004
       }
     }
 
+    static void OtodikFeladat()
+    {
+      Console.Write("5. feladat: barcelonai csapat neve: ");
+
+      var barca = from m in meccsek
+                  where m.Hazai.Contains("Barcelona")
+                  select new { Hazai = m.Hazai };
+
+      var barcaNev = barca.ToArray()[0].Hazai;
+
+      Console.WriteLine(barcaNev);
+
+      int i = 0;
+
+      while (!meccsek[i].Hazai.Contains("Barcelona"))
+      {
+        i++;
+      }
+
+      Console.WriteLine(meccsek[i].Hazai);
+    }
 
     static void Main(string[] args)
     {
       MasodikFeladat();
       HarmadikFeladat();
       NegyedikFeladat();
+      OtodikFeladat();
 
       Console.ReadLine();
     }
