@@ -109,7 +109,12 @@ namespace kosar2004
 
       var november = from m in meccsek
                      where m.Ido == "2004-11-21"
-                     select new { Hazai = m.Hazai, Idegen = m.Idegen, HP = m.HPont, IP = m.IPont };
+                     select new { 
+                                   Hazai = m.Hazai, 
+                                   Idegen = m.Idegen, 
+                                   HP = m.HPont, 
+                                   IP = m.IPont 
+                                };
 
       foreach (var n in november)
       {
@@ -137,6 +142,18 @@ namespace kosar2004
 
     }
 
+    static void NyolcadikFeladat()
+    {
+      StreamWriter file = new StreamWriter("meccsek.txt");
+
+      foreach (var m in meccsek)
+      {
+        file.WriteLine(m.Atalakit());
+      }
+
+      file.Close();
+    }
+
 
     static void Main(string[] args)
     {
@@ -146,6 +163,7 @@ namespace kosar2004
       OtodikFeladat();
       HatodikFeladat();
       HetedikFeladat();
+      NyolcadikFeladat();
 
       Console.ReadLine();
     }

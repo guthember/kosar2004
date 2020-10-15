@@ -46,3 +46,5 @@ Meccsek eltárolása:
 7. Feladat
 - Megszámlálás -> Dictionary
 - Select Groupby
+8. Feladat
+- Fájlba írás osztálymetódus segítségével
