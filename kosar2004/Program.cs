@@ -117,6 +117,27 @@ namespace kosar2004
       }
     }
 
+    static void HetedikFeladat()
+    {
+      Console.WriteLine("7. feladat:");
+
+      var stadionok = from m in meccsek
+                      orderby m.Hely
+                      group m by m.Hely into stadion
+                      select stadion;
+
+      foreach (var stadion in stadionok)
+      {
+        if (stadion.Count() > 20)
+        {
+          Console.WriteLine($"\t{stadion.Key}: {stadion.Count()}");
+        }
+      }
+
+
+    }
+
+
     static void Main(string[] args)
     {
       MasodikFeladat();
@@ -124,6 +145,7 @@ namespace kosar2004
       NegyedikFeladat();
       OtodikFeladat();
       HatodikFeladat();
+      HetedikFeladat();
 
       Console.ReadLine();
     }
