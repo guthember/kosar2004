@@ -30,11 +30,40 @@ namespace kosar2004
       file.Close();
     }
 
+    static void HarmadikFeladat()
+    {
+      Console.Write("3. feladat: Real Madrid: Hazai: ");
+
+      int megszamol = 0;
+
+      foreach (var m in meccsek)
+      {
+        if (m.Hazai == "Real Madrid")
+        {
+          megszamol++;
+        }
+      }
+
+      var hazai = from m in meccsek
+                  where m.Hazai == "Real Madrid"
+                  select new { Hazai = m.Hazai };
+
+      int hazaiDb = hazai.ToList().Count;
+
+      var idegen = from m in meccsek
+                   where m.Idegen == "Real Madrid"
+                   select new { Idegen = m.Idegen };
+
+      int idegenDb = idegen.ToList().Count;
+
+      Console.WriteLine($"{hazaiDb}, Idegen: {idegenDb}");
+
+    }
 
     static void Main(string[] args)
     {
       MasodikFeladat();
-
+      HarmadikFeladat();
 
       Console.ReadLine();
     }
