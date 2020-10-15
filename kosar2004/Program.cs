@@ -92,6 +92,8 @@ namespace kosar2004
 
       Console.WriteLine(barcaNev);
 
+      // vagy
+
       int i = 0;
 
       while (!meccsek[i].Hazai.Contains("Barcelona"))
@@ -99,7 +101,20 @@ namespace kosar2004
         i++;
       }
 
-      Console.WriteLine(meccsek[i].Hazai);
+    }
+
+    static void HatodikFeladat()
+    {
+      Console.WriteLine("6. feladat:");
+
+      var november = from m in meccsek
+                     where m.Ido == "2004-11-21"
+                     select new { Hazai = m.Hazai, Idegen = m.Idegen, HP = m.HPont, IP = m.IPont };
+
+      foreach (var n in november)
+      {
+        Console.WriteLine($"\t{n.Hazai} - {n.Idegen} ({n.HP}:{n.IP})");
+      }
     }
 
     static void Main(string[] args)
@@ -108,6 +123,7 @@ namespace kosar2004
       HarmadikFeladat();
       NegyedikFeladat();
       OtodikFeladat();
+      HatodikFeladat();
 
       Console.ReadLine();
     }
