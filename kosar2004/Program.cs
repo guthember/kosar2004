@@ -60,10 +60,32 @@ namespace kosar2004
 
     }
 
+    static void NegyedikFeladat()
+    {
+      Console.Write("4. feladat: Volt döntetlen? ");
+
+      var dontetlen = from m in meccsek
+                      where m.HPont == m.IPont
+                      select m;
+
+      int db = dontetlen.ToList().Count;
+
+      if (db == 0)
+      {
+        Console.WriteLine("nem");
+      }
+      else
+      {
+        Console.WriteLine("igen");
+      }
+    }
+
+
     static void Main(string[] args)
     {
       MasodikFeladat();
       HarmadikFeladat();
+      NegyedikFeladat();
 
       Console.ReadLine();
     }
